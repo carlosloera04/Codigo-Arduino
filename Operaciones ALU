@@ -1,0 +1,311 @@
+// VARIABLES
+int entrada_A = 0;
+int entrada_B = 0;
+int entrada_C = 0;
+int entrada_D = 0;
+
+// SALIDAS 
+int salida_A = 0;
+int salida_B = 0;
+int salida_C = 0;
+int salida_D = 0;
+int salida_E = 0;
+int salida_F = 0;
+int salida_G = 0;
+
+void setup() 
+{
+  // PINES DE ENTRADA
+  pinMode(9, INPUT);
+  pinMode(10, INPUT);
+  pinMode(11, INPUT);
+  pinMode(12, INPUT);
+
+  // PINES DE SALIDA
+  pinMode(2, OUTPUT);
+  pinMode(3, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(6, OUTPUT);
+  pinMode(7, OUTPUT);
+  pinMode(8, OUTPUT);
+}
+
+void loop() {
+  // ASIGNANDO VALORES A LAS VARIABLES
+  entrada_A = digitalRead(9);
+  entrada_B = digitalRead(10);
+  entrada_C = digitalRead(11);
+  entrada_D = digitalRead(12);
+
+  if (!entrada_A && !entrada_B && !entrada_C && !entrada_D) {
+    cero();
+  }
+  if (entrada_A && !entrada_B && !entrada_C && !entrada_D) {
+    uno();
+  }
+  if (!entrada_A && entrada_B && !entrada_C && !entrada_D) {
+    dos();
+  }
+  if (entrada_A && entrada_B && !entrada_C && !entrada_D) {
+    tres();
+  }
+  if (!entrada_A && !entrada_B && entrada_C && !entrada_D) {
+    cuatro();
+  }
+  if (entrada_A && !entrada_B && entrada_C && !entrada_D) {
+    cinco();
+  }
+  if (!entrada_A && entrada_B && entrada_C && !entrada_D) {
+    seis();
+  }
+  if (entrada_A && entrada_B && entrada_C && !entrada_D) {
+    siete();
+  }
+  if (!entrada_A && !entrada_B && !entrada_C && entrada_D) {
+    ocho();
+  }
+  if (entrada_A && !entrada_B && !entrada_C && entrada_D) {
+    nueve();
+  }
+  if (!entrada_A && entrada_B && !entrada_C && entrada_D) {
+    letraA();
+  }
+  if (entrada_A && entrada_B && !entrada_C && entrada_D) {
+    letraB();
+  }
+  if (!entrada_A && !entrada_B && entrada_C && entrada_D) {
+    letraC();
+  }
+  if (entrada_A && !entrada_B && entrada_C && entrada_D) {
+    letraD();
+  }
+  if (!entrada_A && entrada_B && entrada_C && entrada_D) {
+    letraE();
+  }
+  if (entrada_A && entrada_B && entrada_C && entrada_D) {
+    letraF();
+  }
+}
+
+// OPERACIONES
+void cero() {
+  digitalWrite(2, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(7, HIGH);
+  digitalWrite(8, HIGH);
+  digitalWrite(4, HIGH);
+  digitalWrite(3, HIGH);
+
+  digitalWrite(2, LOW);
+  digitalWrite(6, LOW);
+  digitalWrite(7, LOW);
+  digitalWrite(8, LOW);
+  digitalWrite(4, LOW);
+  digitalWrite(3, LOW);
+}
+
+void uno() {
+  digitalWrite(2, HIGH);
+  digitalWrite(8, HIGH);
+
+  digitalWrite(2, LOW);
+  digitalWrite(8, LOW);
+}
+
+void dos() {
+  digitalWrite(3, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(2, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(7, HIGH);  
+
+  digitalWrite(2, LOW);
+  digitalWrite(6, LOW);
+  digitalWrite(7, LOW);
+  digitalWrite(5, LOW);
+  digitalWrite(3, LOW);
+}
+
+void tres() {
+  digitalWrite(3, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(2, HIGH);
+  digitalWrite(7, HIGH);  
+  digitalWrite(8, HIGH);  
+
+  digitalWrite(2, LOW);
+  digitalWrite(8, LOW);
+  digitalWrite(7, LOW);
+  digitalWrite(5, LOW);
+  digitalWrite(3, LOW);
+}
+
+void cuatro() {
+  digitalWrite(4, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(2, HIGH);
+  digitalWrite(8, HIGH);  
+
+  digitalWrite(2, LOW);
+  digitalWrite(4, LOW);
+  digitalWrite(8, LOW);
+  digitalWrite(5, LOW);
+}
+
+void cinco() {
+  digitalWrite(4, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(3, HIGH);
+  digitalWrite(8, HIGH); 
+  digitalWrite(7, HIGH); 
+
+  digitalWrite(3, LOW);
+  digitalWrite(4, LOW);
+  digitalWrite(8, LOW);
+  digitalWrite(5, LOW);
+  digitalWrite(7, LOW);
+}
+
+void seis() {
+  digitalWrite(4, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(3, HIGH);
+  digitalWrite(8, HIGH); 
+  digitalWrite(7, HIGH); 
+  digitalWrite(6, HIGH); 
+
+  digitalWrite(3, LOW);
+  digitalWrite(4, LOW);
+  digitalWrite(8, LOW);
+  digitalWrite(5, LOW);
+  digitalWrite(7, LOW);
+  digitalWrite(6, LOW);
+}
+
+void siete() {
+  digitalWrite(3, HIGH);
+  digitalWrite(2, HIGH); 
+  digitalWrite(8, HIGH); 
+
+  digitalWrite(3, LOW);
+  digitalWrite(8, LOW);
+  digitalWrite(2, LOW);
+}
+
+void ocho() {
+  digitalWrite(2, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(7, HIGH);
+  digitalWrite(8, HIGH);
+  digitalWrite(4, HIGH);
+  digitalWrite(3, HIGH);
+  digitalWrite(5, HIGH);
+
+  digitalWrite(2, LOW);
+  digitalWrite(6, LOW);
+  digitalWrite(7, LOW);
+  digitalWrite(8, LOW);
+  digitalWrite(4, LOW);
+  digitalWrite(3, LOW);
+  digitalWrite(8, LOW);
+  digitalWrite(5, LOW);
+}
+
+void nueve() {
+  digitalWrite(3, HIGH);
+  digitalWrite(2, HIGH); 
+  digitalWrite(8, HIGH); 
+  digitalWrite(5, HIGH); 
+  digitalWrite(4, HIGH); 
+
+  digitalWrite(3, LOW);
+  digitalWrite(8, LOW);
+  digitalWrite(2, LOW);
+  digitalWrite(5, LOW); 
+  digitalWrite(4, LOW); 
+}
+
+void letraA() {
+  digitalWrite(2, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(8, HIGH);
+  digitalWrite(4, HIGH);
+  digitalWrite(3, HIGH);
+  digitalWrite(5, HIGH);
+
+  digitalWrite(2, LOW);
+  digitalWrite(6, LOW);
+  digitalWrite(8, LOW);
+  digitalWrite(4, LOW);
+  digitalWrite(3, LOW);
+  digitalWrite(8, LOW);
+  digitalWrite(5, LOW);
+}
+
+void letraB() {
+  digitalWrite(4, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(8, HIGH); 
+  digitalWrite(7, HIGH); 
+  digitalWrite(6, HIGH); 
+
+  
+  digitalWrite(4, LOW);
+  digitalWrite(8, LOW);
+  digitalWrite(5, LOW);
+  digitalWrite(7, LOW);
+  digitalWrite(6, LOW);
+}
+
+void letraC() {
+  digitalWrite(3, HIGH);
+  digitalWrite(4, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(7, HIGH);  
+
+  digitalWrite(3, LOW);
+  digitalWrite(4, LOW);
+  digitalWrite(6, LOW);
+  digitalWrite(7, LOW);
+}
+
+void letraD() {
+  digitalWrite(6, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(2, HIGH);
+  digitalWrite(7, HIGH);  
+  digitalWrite(8, HIGH);  
+
+  digitalWrite(2, LOW);
+  digitalWrite(8, LOW);
+  digitalWrite(7, LOW);
+  digitalWrite(5, LOW);
+  digitalWrite(6, LOW);
+}
+
+void letraE() {
+  digitalWrite(3, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(4, HIGH); 
+  digitalWrite(7, HIGH);
+
+  digitalWrite(3, LOW);
+  digitalWrite(5, LOW);
+  digitalWrite(6, LOW);
+  digitalWrite(4, LOW);
+  digitalWrite(7, LOW);
+}
+
+void letraF() {
+  digitalWrite(3, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(4, HIGH);  
+
+  digitalWrite(3, LOW);
+  digitalWrite(5, LOW);
+  digitalWrite(6, LOW);
+  digitalWrite(4, LOW);
+}
