@@ -1,0 +1,198 @@
+const int segA = 2;
+const int segB = 3;
+const int segC = 4;
+const int segD = 5;
+const int segE = 6;
+const int segF = 7;
+const int segG = 8;
+
+const int segDA = 9;
+const int segDB = 10;
+const int segDC = 11;
+const int segDD = 12;
+const int segDE = 13;
+const int segDF = A4;
+const int segDG = A5;
+
+void setup() {
+  Serial.begin(9600);
+
+  pinMode(segA, OUTPUT);
+  pinMode(segB, OUTPUT);
+  pinMode(segC, OUTPUT);
+  pinMode(segD, OUTPUT);
+  pinMode(segE, OUTPUT);
+  pinMode(segF, OUTPUT);
+  pinMode(segG, OUTPUT);
+
+  pinMode(segDA, OUTPUT);
+  pinMode(segDB, OUTPUT);
+  pinMode(segDC, OUTPUT);
+  pinMode(segDD, OUTPUT);
+  pinMode(segDE, OUTPUT);
+  pinMode(segDF, OUTPUT);
+  pinMode(segDG, OUTPUT);
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    int numero1 = Serial.parseInt();
+    char operacion = Serial.read();
+    int numero2 = Serial.parseInt();
+    int numero3 = Serial.parseInt();
+
+    int resultado = 0;
+
+    switch (operacion) {
+      case '+':
+        resultado = numero1 + numero2 + numero3;
+        break;
+      case '-':
+        resultado = numero1 - numero2 - numero3;
+        break;
+      case '*':
+        resultado = numero1 * numero2;
+        break;
+      case '/':
+        if (numero2 != 0) {
+          resultado = numero1 / numero2;
+        } else {
+          Serial.println("Error: División por cero");
+          return;
+        }
+        break;
+    }
+
+    if (resultado <= 99) {
+      if (resultado > 9) {
+        int unidades = resultado % 10;
+        int decenas = resultado / 10;
+        mostrarNumero(unidades, segDA, segDB, segDC, segDD, segDE, segDF, segDG);
+        mostrarNumero(decenas, segA, segB, segC, segD, segE, segF, segG);
+      } else {
+        mostrarNumero(resultado, segDA, segDB, segDC, segDD, segDE, segDF, segDG);
+      }
+      Serial.println(resultado);
+    } else {
+      Serial.println("Resultado demasiado grande");
+    }
+
+    delay(9000);
+    limpiarDisplay();
+  }
+}
+
+void mostrarNumero(int numero, int sA, int sB, int sC, int sD, int sE, int sF, int sG) {
+  switch(numero) {
+    case 0:
+      digitalWrite(sA, LOW);
+      digitalWrite(sB, LOW);
+      digitalWrite(sC, LOW);
+      digitalWrite(sD, LOW);
+      digitalWrite(sE, LOW);
+      digitalWrite(sF, LOW);
+      digitalWrite(sG, HIGH);
+      break;
+    case 1:
+      digitalWrite(sA, HIGH);
+      digitalWrite(sB, LOW);
+      digitalWrite(sC, LOW);
+      digitalWrite(sD, HIGH);
+      digitalWrite(sE, HIGH);
+      digitalWrite(sF, HIGH);
+      digitalWrite(sG, HIGH);
+      break;
+    case 2:
+      digitalWrite(sA, LOW);
+      digitalWrite(sB, LOW);
+      digitalWrite(sC, HIGH);
+      digitalWrite(sD, LOW);
+      digitalWrite(sE, LOW);
+      digitalWrite(sF, HIGH);
+      digitalWrite(sG, LOW);
+      break;
+    case 3:
+      digitalWrite(sA, LOW);
+      digitalWrite(sB, LOW);
+      digitalWrite(sC, LOW);
+      digitalWrite(sD, LOW);
+      digitalWrite(sE, HIGH);
+      digitalWrite(sF, HIGH);
+      digitalWrite(sG, LOW);
+      break;
+    case 4:
+      digitalWrite(sA, HIGH);
+      digitalWrite(sB, LOW);
+      digitalWrite(sC, LOW);
+      digitalWrite(sD, HIGH);
+      digitalWrite(sE, HIGH);
+      digitalWrite(sF, LOW);
+      digitalWrite(sG, LOW);
+      break;
+    case 5:
+      digitalWrite(sA, LOW);
+      digitalWrite(sB, HIGH);
+      digitalWrite(sC, LOW);
+      digitalWrite(sD, LOW);
+      digitalWrite(sE, HIGH);
+      digitalWrite(sF, LOW);
+      digitalWrite(sG, LOW);
+      break;
+    case 6:
+      digitalWrite(sA, LOW);
+      digitalWrite(sB, HIGH);
+      digitalWrite(sC, LOW);
+      digitalWrite(sD, LOW);
+      digitalWrite(sE, LOW);
+      digitalWrite(sF, LOW);
+      digitalWrite(sG, LOW);
+      break;
+    case 7:
+      digitalWrite(sA, LOW);
+      digitalWrite(sB, LOW);
+      digitalWrite(sC, LOW);
+      digitalWrite(sD, HIGH);
+      digitalWrite(sE, HIGH);
+      digitalWrite(sF, HIGH);
+      digitalWrite(sG, LOW);
+      break;
+    case 8:
+      digitalWrite(sA, LOW);
+      digitalWrite(sB, LOW);
+      digitalWrite(sC, LOW);
+      digitalWrite(sD, LOW);
+      digitalWrite(sE, LOW);
+      digitalWrite(sF, LOW);
+      digitalWrite(sG, LOW);
+      break;
+    case 9:
+      digitalWrite(sA, LOW);
+      digitalWrite(sB, LOW);
+      digitalWrite(sC, LOW);
+      digitalWrite(sD, LOW);
+      digitalWrite(sE, HIGH);
+      digitalWrite(sF, LOW);
+      digitalWrite(sG, LOW);
+      break;
+    default:
+      break;
+  }
+}
+
+void limpiarDisplay() {
+  digitalWrite(segA, HIGH);
+  digitalWrite(segB, HIGH);
+  digitalWrite(segC, HIGH);
+  digitalWrite(segD, HIGH);
+  digitalWrite(segE, HIGH);
+  digitalWrite(segF, HIGH);
+  digitalWrite(segG, HIGH);
+
+  digitalWrite(segDA, HIGH);
+  digitalWrite(segDB, HIGH);
+  digitalWrite(segDC, HIGH);
+  digitalWrite(segDD, HIGH);
+  digitalWrite(segDE, HIGH);
+  digitalWrite(segDF, HIGH);
+  digitalWrite(segDG, HIGH);
+}
